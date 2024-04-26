@@ -6,7 +6,7 @@ ONE = "\u200f"
 
 def encode_byte(normal_byte: int) -> str:
     encoded_byte = ""
-    for shift in reversed(range(8)):
+    for shift in range(8):
         if (normal_byte >> shift) & 1:
             encoded_byte += ONE
         else:
@@ -16,7 +16,7 @@ def encode_byte(normal_byte: int) -> str:
 
 def decode_byte(encoded_byte: str) -> int:
     normal_byte = 0
-    for i, c in enumerate(reversed(encoded_byte)):
+    for i, c in enumerate(encoded_byte):
         if c == ONE:
             normal_byte += 2**i
     return normal_byte
